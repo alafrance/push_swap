@@ -6,13 +6,13 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/23 14:11:53 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/03/25 15:23:15 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= 
-FILES			= 
-INC_FILES		= 
+NAME			= push_swap
+FILES			= main.c push_swap.c display.c
+INC_FILES		= push_swap.h
 INC_PATH		= ./includes/
 INC				= $(addprefix ${INC_PATH}, ${INC_FILES})
 SRC_PATH		= ./srcs/
@@ -20,7 +20,7 @@ SRC				= $(addprefix ${SRC_PATH}, ${FILES})
 
 CC				= clang
 OBJS 			= ${SRC:.c=.o}
-FLAGS			= -Wall -Wextra -Werror
+FLAGS			= #-Wall -Wextra -Werror
 
 #LIBRARY
 NAME_LIBFT 		= libft.a
@@ -37,7 +37,7 @@ lib:
 				${CC} ${FLAGS} -c $< -o $@ -I ${INC_PATH}
 
 ${NAME}: 		lib ${OBJS}
-				${CC} ${OBJS} main.c -o ${NAME} ${NAME_LIBFT} -I ${INC_PATH}
+				${CC} ${OBJS} -o ${NAME} ${NAME_LIBFT} -I ${INC_PATH}
 
 clean:
 				make -C ${LIBFT_PATH} clean
