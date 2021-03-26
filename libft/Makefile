@@ -6,7 +6,7 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:02:38 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/24 15:57:23 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/03/26 15:20:06 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strcmp.c \
 ft_strncmp.c ft_strnstr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_strrchr.c \
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-ft_convert_base.c ft_putnbr_base.c ft_maths.c ft_atoi_base.c ft_check_base.c \
+ft_convert_base.c ft_putnbr_base.c ft_maths.c ft_maths_2.c ft_atoi_base.c ft_check_base.c \
 ft_swap.c ft_strrev.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_size_nb.c \
 get_next_line.c get_next_line_utils.c \
 $(addprefix ft_printf/, ft_printf.c ft_parse.c ft_display.c \

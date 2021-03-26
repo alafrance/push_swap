@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 07:32:47 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 09:29:49 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 15:25:43 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ static void	ft_display_list(t_list **elem, char *color)
 	int	size_n;
 
 	if (*elem)
-		size_n = ft_size_nb((int)(*elem)->content, 10);
+	{
+		size_n = ft_size_nb(ft_abs((int)(*elem)->content), 10);
+		if ((int)(*elem)->content < 0)
+			size_n ++;
+	}
 	else
 		size_n = 0;
 	if (ft_even(size_n))
@@ -73,15 +77,18 @@ static void	display_footer()
 void	display_stack(t_list *a, t_list *b)
 {
 	int biggest;
+	int stop_green;
 
-	if (!a || !b)
+	if (!a && !b)
 		return ;
-	biggest = 0;
+	if (a)
+		biggest = (int)a->content;
 	display_header();
+	stop_green = 0;
 	while (a || b)
 	{
 		ft_printf("|");
-		if (a && biggest != -1 && (int)a->content > biggest)
+		if (a && !stop_green && (int)a->content >= biggest)
 		{
 			biggest = (int)a->content;
 			ft_display_list(&a, BGRN);
@@ -89,7 +96,7 @@ void	display_stack(t_list *a, t_list *b)
 		else
 		{
 			ft_display_list(&a, BRED);
-			biggest = -1;			
+			stop_green = 1;
 		}
 		ft_display_list(&b, BRED);
 		ft_printf("\n");

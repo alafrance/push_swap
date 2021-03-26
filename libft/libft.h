@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 09:14:08 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 15:19:51 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,5 @@ int					ft_putnbr_hexa_maj_count(unsigned long long nb);
 int					ft_zero_exception(t_flags flags);
 int					ft_lstnew_prt(t_list **s, size_t count, size_t size);
 int					ft_even(int nb);
+int					ft_abs(int nb);
 #endif

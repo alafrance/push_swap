@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 13:36:43 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 15:55:32 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 11:47:29 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/26 15:55:45 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-/*
-**	SIZE_ARRAY NEED TO BE EVEN
-*/
-# define SIZE_ARRAY 12
-# include "../libft/libft.h"
-# include "color.h"
-# include <limits.h>
-void	push_swap();
-void	display_stack(t_list *a, t_list *b);
-void	display_text_center(char *text);
-void	display_line_empty();
-void	parse_number(int ac, char **av, t_list **a);
-void	del(void * content);
-int		ft_error(t_list *a);
-#endif
+#include "push_swap.h"
+
+
+void	del(void * content)
+{
+	content = NULL;	
+}
+
+int		ft_error(t_list *a)
+{
+	ft_printf("Error\n");
+	ft_lstclear(&a, del);	
+	exit(EXIT_FAILURE);
+	return (0);
+}

@@ -6,12 +6,13 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/26 09:14:18 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/03/26 11:51:28 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
-FILES			= main.c push_swap.c display.c display_utility.c
+FILES			= main.c push_swap.c display.c display_utility.c parse_number.c \
+				ft_error.c
 INC_FILES		= push_swap.h
 INC_PATH		= ./includes/
 INC				= $(addprefix ${INC_PATH}, ${INC_FILES})
