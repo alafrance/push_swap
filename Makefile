@@ -6,21 +6,32 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/26 11:51:28 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/03/29 17:58:47 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= push_swap
-FILES			= main.c push_swap.c display.c display_utility.c parse_number.c \
-				ft_error.c
+PUSH			= push_swap
+
+CHECKER			= checker
+
+FILES_GENERAL	= display.c display_utility.c parse_number.c ft_error.c 
+FILES_PUSH		= push_swap.c main.c
+FILES_CHECK		= main.c
+
+GEN_PATH		= general/
+PUSH_PATH		= push_swap/
+CHECK_PATH		= checker/
 INC_FILES		= push_swap.h
 INC_PATH		= ./includes/
 INC				= $(addprefix ${INC_PATH}, ${INC_FILES})
+
 SRC_PATH		= ./srcs/
-SRC				= $(addprefix ${SRC_PATH}, ${FILES})
+SRC				= $(addprefix ${SRC_PATH}, $(addprefix ${PUSH_PATH}, ${FILES_PUSH}) $(addprefix ${GEN_PATH}, ${FILES_GENERAL}))
+SRC_2			= $(addprefix ${SRC_PATH}, $(addprefix ${CHECK_PATH}, ${FILES_CHECK}) $(addprefix ${GEN_PATH}, ${FILES_GENERAL}))
 
 CC				= clang
 OBJS 			= ${SRC:.c=.o}
+OBJS_2 			= ${SRC_2:.c=.o}
 FLAGS			= #-Wall -Wextra -Werror
 
 #LIBRARY
@@ -28,7 +39,7 @@ NAME_LIBFT 		= libft.a
 LIBFT_PATH 		= libft/
 LIBFT			= $(addprefix ${LIBFT_PATH}, ${NAME_LIBFT})
 
-all: 			${NAME}	
+all: 			${PUSH}	
 
 lib: 
 				make -C ${LIBFT_PATH}
@@ -37,15 +48,17 @@ lib:
 %.o: %.c 		${INC}
 				${CC} ${FLAGS} -c $< -o $@ -I ${INC_PATH}
 
-${NAME}: 		lib ${OBJS}
-				${CC} ${FLAGS} ${OBJS} -o ${NAME} ${NAME_LIBFT} -I ${INC_PATH}
+${PUSH}: 		lib ${OBJS} ${OBJS_2}
+				${CC} ${FLAGS} ${OBJS} -o ${PUSH} ${NAME_LIBFT} -I ${INC_PATH}
+				${CC} ${FLAGS} ${OBJS_2} -o ${CHECKER} ${NAME_LIBFT} -I ${INC_PATH}
 
 clean:
 				make -C ${LIBFT_PATH} clean
 				${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean:			clean
-				${RM} ${NAME}
+				${RM} ${PUSH}
+				${RM} ${CHECKER}
 				${RM} ${LIBFT}
 				${RM} ${NAME_LIBFT}
 re:				fclean all
