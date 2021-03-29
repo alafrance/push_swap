@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_utility.c                                  :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 09:09:09 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 20:11:53 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 19:57:57 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 12:45:52 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display_text_center(char *text)
+
+void	swap_list(t_list **lst)
 {
-	ft_printf("|");
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2 + 1);
-	ft_printf("%s", text);
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2);
+	void *tmp;
+	if (!*lst || !(*lst)->next)
+		return ;
+	tmp = (*lst)->content;
+	(*lst)->content = (*lst)->next->content;
+	(*lst)->next->content = tmp;
 }
 
-void	display_line_empty()
+void swap_a(t_list **a)
 {
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|\n");
+	swap_list(a);
+	ft_printf("sa\n");
+}
+
+void swap_b(t_list **b)
+{
+	swap_list(b);
+	ft_printf("sb\n");
+}
+
+void swap_a_b(t_list **a, t_list **b)
+{
+	swap_list(a);
+	swap_list(b);
+	ft_printf("ss");
 }

@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_utility.c                                  :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 09:09:09 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 20:11:53 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 19:59:35 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 13:19:45 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display_text_center(char *text)
+void push_list(t_list **add, t_list **remove)
 {
-	ft_printf("|");
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2 + 1);
-	ft_printf("%s", text);
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2);
+	t_list *tmp;
+
+	if (!*remove)
+		return ;
+	tmp = *remove;
+	if ((*remove)->next)
+		*remove = (*remove)->next;
+	else
+		*remove = NULL;
+	if (*add)
+		tmp->next = *add;
+	else
+		tmp->next = NULL;
+	*add = tmp;
 }
 
-void	display_line_empty()
+void push_a(t_list **a, t_list **b)
 {
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|\n");
+	push_list(a, b);
+	ft_printf("pa\n");
+}
+
+void push_b(t_list **a, t_list **b)
+{
+	push_list(b, a);
+	ft_printf("pb\n");
 }

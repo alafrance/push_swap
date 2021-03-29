@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 16:03:03 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 20:08:26 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	parse_number(int ac, char **av, t_list **a)
 				while (av[i][j] == ' ' && av[i][j])
 					j++;
 				nb = pick_number(av[i], a, &j, &is_num);
-				ft_lstadd_front(a, ft_lstnew((void*) (size_t)nb));
+				ft_lstadd_back(a, ft_lstnew((void*) (size_t)nb));
 			}
 			if (!is_num)
 				ft_error(*a);
 		}
 		else
-			ft_lstadd_front(a, ft_lstnew((void *) (size_t)ft_atoi(av[i])));
+			ft_lstadd_back(a, ft_lstnew((void *) (size_t)ft_atoi(av[i])));
 		i++;
 	}
 }

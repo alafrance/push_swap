@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_utility.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 09:09:09 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 20:11:53 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/25 14:05:51 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 17:07:08 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display_text_center(char *text)
+int	main(int ac, char **av)
 {
-	ft_printf("|");
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2 + 1);
-	ft_printf("%s", text);
-	ft_display_repeat(' ', (SIZE_ARRAY - ft_strlen(text)) / 2);
-}
+	t_list *a;
+	t_list *b;
 
-void	display_line_empty()
-{
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|");
-	ft_display_repeat(' ', SIZE_ARRAY);
-	ft_printf("|\n");
+	b = NULL;
+	a = NULL;
+	if (ac == 1)
+		return (0);
+	parse_number(ac, av, &a);
+	if (a)
+		ft_lstclear(&a, del);
+	if (b)
+		ft_lstclear(&b, del);
+	return (1);
 }

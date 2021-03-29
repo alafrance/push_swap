@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 07:32:47 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 15:25:43 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 20:13:24 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	display_header()
 	char	*text_a;
 	char	*text_b;
 
-	text_a = "STACK A";
-	text_b = "STACK B";
+	text_a = "TOP STACK A";
+	text_b = "TOP STACK B";
 	ft_printf("|");
 	ft_display_repeat('-', SIZE_ARRAY * 2 + 1);
 	ft_printf("|\n");
