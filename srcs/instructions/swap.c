@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 14:05:51 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/27 17:07:08 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 19:57:57 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 12:45:52 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
-{
-	t_list *a;
-	t_list *b;
 
-	b = NULL;
-	a = NULL;
-	if (ac == 1)
-		return (0);
-	parse_number(ac, av, &a);
-	if (a)
-		ft_lstclear(&a, del);
-	if (b)
-		ft_lstclear(&b, del);
-	return (1);
+void	swap_list(t_list **lst)
+{
+	void *tmp;
+	if (!*lst || !(*lst)->next)
+		return ;
+	tmp = (*lst)->content;
+	(*lst)->content = (*lst)->next->content;
+	(*lst)->next->content = tmp;
+}
+
+void swap_a(t_list **a)
+{
+	swap_list(a);
+	ft_printf("sa\n");
+}
+
+void swap_b(t_list **b)
+{
+	swap_list(b);
+	ft_printf("sb\n");
+}
+
+void swap_a_b(t_list **a, t_list **b)
+{
+	swap_list(a);
+	swap_list(b);
+	ft_printf("ss");
 }

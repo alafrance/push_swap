@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 14:05:51 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/27 17:07:08 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 20:01:43 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 13:17:35 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	rotate_list(t_list **lst)
 {
-	t_list *a;
-	t_list *b;
+	t_list *tmp;
 
-	b = NULL;
-	a = NULL;
-	if (ac == 1)
-		return (0);
-	parse_number(ac, av, &a);
-	if (a)
-		ft_lstclear(&a, del);
-	if (b)
-		ft_lstclear(&b, del);
-	return (1);
+	if (!*lst || !(*lst)->next)
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(lst, tmp);
+}
+
+void	rotate_a(t_list **a)
+{
+	rotate_list(a);
+	ft_printf("ra\n");
+}
+
+void	rotate_b(t_list **b)
+{
+	rotate_list(b);
+	ft_printf("rb\n");
+}
+
+void	rotate_a_b(t_list **a, t_list **b)
+{
+	rotate_list(a);
+	rotate_list(b);
+	ft_printf("rr\n");
 }

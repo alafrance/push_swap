@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 14:05:51 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/27 17:07:08 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/26 19:59:35 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/27 13:19:45 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void push_list(t_list **add, t_list **remove)
 {
-	t_list *a;
-	t_list *b;
+	t_list *tmp;
 
-	b = NULL;
-	a = NULL;
-	if (ac == 1)
-		return (0);
-	parse_number(ac, av, &a);
-	if (a)
-		ft_lstclear(&a, del);
-	if (b)
-		ft_lstclear(&b, del);
-	return (1);
+	if (!*remove)
+		return ;
+	tmp = *remove;
+	if ((*remove)->next)
+		*remove = (*remove)->next;
+	else
+		*remove = NULL;
+	if (*add)
+		tmp->next = *add;
+	else
+		tmp->next = NULL;
+	*add = tmp;
+}
+
+void push_a(t_list **a, t_list **b)
+{
+	push_list(a, b);
+	ft_printf("pa\n");
+}
+
+void push_b(t_list **a, t_list **b)
+{
+	push_list(b, a);
+	ft_printf("pb\n");
 }
