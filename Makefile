@@ -6,7 +6,7 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/29 18:10:09 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/03/29 18:22:13 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,15 @@ PUSH			= push_swap
 
 CHECKER			= checker
 
-FILES_GENERAL	= display.c display_utility.c parse_number.c ft_error.c 
+FILES_GENERAL	= display.c display_utility.c parse_number.c ft_error.c \
+					$(addprefix instructions/, push.c reverse.c rotate.c swap.c)
 FILES_PUSH		= push_swap.c main.c
 FILES_CHECK		= main.c
 
 GEN_PATH		= general/
 PUSH_PATH		= push_swap/
 CHECK_PATH		= checker/
-INC_FILES		= push_swap.h
+INC_FILES		= push_swap.h general.h checker.h
 INC_PATH		= ./includes/
 INC				= $(addprefix ${INC_PATH}, ${INC_FILES})
 
