@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:46:58 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 20:02:07 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 00:17:42 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	ft_lstadd_back_gc(t_list **lst, void *content, t_list **gc)
 	t_list *new_elem;
 
 	new_elem = ft_lstnew(content);
-	ft_lstadd_front(gc, ft_lstnew(&new_elem));
+	if (!new_elem)
+		ft_error(*gc);
 	ft_lstadd_back(lst, new_elem);
+	ft_lstadd_front(gc, ft_lstnew(&new_elem));
 }
 
 void	malloc_gc(t_list *gc, void **malloc, size_t count, size_t size)
@@ -44,7 +46,7 @@ void	ft_print_garbage_collector(t_list *gc)
 {
 	while (gc)
 	{
-		ft_printf("%d", gc->content);
+		ft_printf("%d", (int)gc->content);
 		gc = gc->next;
 	}
 }

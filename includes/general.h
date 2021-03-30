@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 20:00:17 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 22:43:04 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 # include "../libft/libft.h"
 # include "color.h"
 # include <limits.h>
-/*
-**	SIZE_ARRAY NEED TO BE EVEN AND SIZE < 12
-*/
-
 /*
 ** DISPLAY STACK
 */

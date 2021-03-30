@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 19:27:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 20:20:09 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 23:50:28 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int main(int ac, char **av)
 	t_list *b;
 	t_list *gc;
 
+	a = NULL;
+	b = NULL;
+	gc = NULL;
 	if (ac == 1)
 		ft_error(gc);
 	parse_number(ac, av, &a, &gc);
