@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 14:04:47 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 20:00:17 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ void	rotate_a_b(t_list **a, t_list **b);
 **	GARBAGE COLLECTOR
 */
 void	ft_lstadd_back_gc(t_list **lst, void *content, t_list **gc);
-void	ft_lstclear_gc(t_list *gc);
+void	malloc_gc(t_list *gc, void **malloc, size_t count, size_t size);
+void	ft_print_garbage_collector(t_list *gc);
+void	ft_lstclear_gc(t_list **gc);
 #endif

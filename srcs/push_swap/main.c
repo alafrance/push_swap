@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 18:16:46 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 19:34:02 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/30 19:27:42 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/30 20:20:09 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "push_swap.h"
+#include <stdio.h>
+int main(int ac, char **av)
+{
+	t_list *a;
+	t_list *b;
+	t_list *gc;
 
-#include "general.h"
-void	checker(t_list *a, t_list *b, t_list *gc);
-t_list *pick_instruction(t_list *gc);
-int 	is_instruction(char *str);
-#endif
+	if (ac == 1)
+		ft_error(gc);
+	parse_number(ac, av, &a, &gc);
+	//ft_lstclear_gc(&gc);
+	// printf()
+	// while (1);
+	// ft_print_garbage_collector(gc);
+	display_stack(a, b);
+}
