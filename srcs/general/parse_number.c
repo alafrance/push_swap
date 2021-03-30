@@ -6,67 +6,68 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/26 20:08:26 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 15:48:45 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int pick_number(char *av, t_list **a, int *j, int *is_num)
+
+long	ft_atoi_one_number(char *av, int *is_num, int *size_n)
 {
 	long nb;
 	int neg;
-	int size_n;
-	
-	size_n = 0;
-	nb = 0;
+
 	neg = 1;
-	if (av[*j] == '-')
+	if (*av == '-')
 	{
 		neg = -1;
-		(*j)++;			
+		av++;			
 	}
-	while (ft_isdigit(av[*j]) && av[*j])
+	while (ft_isdigit(*av) && *av)
 	{
 		*is_num = 1;
-		nb = nb * 10 + av[*j] - '0';
-		(*j)++;
-		size_n++;
+		nb = nb * 10 + *av - '0';
+		av++;
+		(*size_n)++;
 	}
-	if (size_n > 10 || nb > INT_MAX || nb < INT_MIN)
-		ft_error(*a);
 	nb *= neg;
 	return (nb);
 }
 
-void	parse_number(int ac, char **av, t_list **a)
+void	pick_number(char *av, t_list **a, t_list **gc)
+{
+	long	nb;
+	int	size_n;
+	int	is_num;
+
+	size_n = 0;
+	while (*av)
+	{
+		if (!ft_isdigit(*av) && *av != ' ' && *av != '-')
+			ft_error(*gc);
+		while (*av == ' ' && *av)
+			av++;
+		nb = ft_atoi_one_number(av, &is_num, &size_n);
+		if (size_n > 10 || nb > INT_MAX || nb < INT_MIN)
+			ft_error(gc);
+		if (!is_num)
+			ft_error(*gc);
+		printf("%d", nb);
+	}
+}
+
+void	parse_number(int ac, char **av, t_list **a, t_list **gc)
 {
 	int	i;
-	int	j;
-	int	nb;
-	int is_num;
 
 	i = 1;
 	while (i != ac)
 	{
-		is_num = 0;
-		j = 0;
 		if (ft_strlen(av[i]) != 1)
-		{
-			while (av[i][j])
-			{
-				if (!ft_isdigit(av[i][j]) && av[i][j] != ' ' && av[i][j] != '-')
-					ft_error(*a);
-				while (av[i][j] == ' ' && av[i][j])
-					j++;
-				nb = pick_number(av[i], a, &j, &is_num);
-				ft_lstadd_back(a, ft_lstnew((void*) (size_t)nb));
-			}
-			if (!is_num)
-				ft_error(*a);
-		}
+			pick_number(av[i], &a, &gc);
 		else
-			ft_lstadd_back(a, ft_lstnew((void *) (size_t)ft_atoi(av[i])));
+			//ft_lstadd_back_gc(a, (void *) (size_t)ft_atoi(av[i]), gc);
 		i++;
 	}
 }

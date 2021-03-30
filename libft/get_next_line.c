@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 11:59:28 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/24 15:55:26 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 11:08:06 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	get_next_line(int fd, char **line)
 {
 	int			b_read;
 	static char	*filebuf[4096];
-	int			eof;
+	int	eof;
 
 	eof = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1 || !line)
@@ -71,7 +71,7 @@ int	get_next_line(int fd, char **line)
 	filebuf[fd] = fill_filebuf(fd, filebuf[fd], &b_read, &eof);
 	*line = ft_substr_line(filebuf[fd]);
 	filebuf[fd] = ft_remove_first_line(filebuf[fd]);
-	if (filebuf[fd] == NULL || (eof && filebuf[fd][0] == '\0'))
+	if (filebuf[fd] == NULL || eof)
 		return (0);
 	else
 		return (1);
