@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_tmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/15 15:19:02 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 14:27:31 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/03/31 15:13:57 by alafranc          #+#    #+#             */
+/*   Updated: 2021/03/31 15:28:05 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "general.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_print_struct_int(t_list *lst)
 {
-	char			*buf;
-	unsigned int	i;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	buf = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!buf)
-		return (NULL);
-	while (s[i])
+	while (lst)
 	{
-		buf[i] = f(i, s[i]);
-		i++;
+		printf("%d", (int)lst->content);
+		lst = lst->next;
 	}
-	buf[i] = '\0';
-	return (buf);
+}
+
+void	ft_print_struct_str(t_list *lst)
+{
+	while (lst)
+	{
+		printf("%s", (char*)lst->content);
+		lst = lst->next;
+	}
 }

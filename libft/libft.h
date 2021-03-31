@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 11:44:45 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 14:35:55 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-int					ft_nalloc(char **s, size_t count, size_t size);
-int					ft_nalloc_void(void **s, size_t count, size_t size);
-int					ft_nalloc_list(t_list **s, size_t count, size_t size);
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **alst, t_list *new);
 int					ft_lstsize(t_list *lst);
@@ -138,4 +135,5 @@ int					ft_strslen(char **strs);
 void				free_all(char **strs, int j);
 char				**ft_strsjoin(char **s1, char *s2);
 char				**ft_strsdup(char **s1);
+char				*ft_strcpy(char *dest, char *src);
 #endif

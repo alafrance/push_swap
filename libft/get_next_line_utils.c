@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:03:45 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/24 15:57:50 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 14:29:25 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		return (ft_strdup(s2));
 	if (s2 == NULL)
 		return (ft_strdup(s1));
-	if (!(ft_nalloc(&buf, sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1)))
+	buf = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!buf)
 		return (NULL);
 	while (s1[j])
 		buf[i++] = s1[j++];
@@ -69,7 +70,8 @@ char	*ft_substr_line(char *s)
 		return (ft_strdup(""));
 	while (i < end && s[i])
 		i++;
-	if (!(ft_nalloc(&buf, sizeof(char), i + 1)))
+	buf = malloc(sizeof(char) * (i + 1));
+	if (!buf)
 		return (NULL);
 	i = 0;
 	while (s[i] && i < end)

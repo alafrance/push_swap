@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 22:43:04 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 15:28:38 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "color.h"
 # include <limits.h>
+#include <stdio.h> //
 /*
 ** DISPLAY STACK
 */
@@ -51,8 +52,11 @@ void	rotate_a_b(t_list **a, t_list **b);
 /*
 **	GARBAGE COLLECTOR
 */
-void	ft_lstadd_back_gc(t_list **lst, void *content, t_list **gc);
-void	malloc_gc(t_list *gc, void **malloc, size_t count, size_t size);
 void	ft_print_garbage_collector(t_list *gc);
-void	ft_lstclear_gc(t_list **gc);
+void	ft_strdup_gc(t_list **gc, char **dest, char *src);
+/*
+**	TMP FUNCTION FOR DEBUD
+*/
+void	ft_print_struct_int(t_list *lst);
+void	ft_print_struct_str(t_list *lst);
 #endif

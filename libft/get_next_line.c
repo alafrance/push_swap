@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 11:59:28 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 11:08:06 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 14:29:44 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_remove_first_line(char *file)
 		i++;
 	if (file[i] == '\n')
 		i++;
-	if (!(ft_nalloc(&buf, sizeof(char), ft_strlen(file) - i + 1)))
+	buf = malloc(sizeof(char) * (ft_strlen(file) - i + 1));
+	if (!buf)
 		return (NULL);
 	while (file[i])
 		buf[j++] = file[i++];

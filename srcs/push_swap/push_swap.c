@@ -6,13 +6,13 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 19:27:49 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 19:30:29 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 15:04:11 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_list *a, t_list *b, t_list *gc)
+void	push_swap(t_list **a, t_list **b, t_list **gc)
 {
 	
 }

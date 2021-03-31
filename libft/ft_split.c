@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:18:32 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/30 09:54:07 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/03/31 14:26:15 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static char	*malloc_a_case(const char *str, char c, char **strs, int index)
 	i = 0;
 	while (str[i] != c && str[i])
 		i++;
-	if (!(ft_nalloc(&buf, i + 1, sizeof(char))))
+	buf = malloc(sizeof(char) * (i + 1));
+	if (!buf)
 	{
 		free_all(strs, index);
 		return (NULL);
