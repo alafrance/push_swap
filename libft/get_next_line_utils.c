@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 00:03:45 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 14:29:25 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 10:36:06 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	*ft_substr_line(char *s)
 
 	i = 0;
 	size = 0;
+	if (!s)
+		return (NULL);
 	if (ft_strchr_gnl(s, '\n') == -1)
 		end = ft_strlen(s);
 	else

@@ -6,7 +6,7 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/03/31 15:26:14 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/04/01 14:06:14 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CHECKER			= checker
 
 FILES_GENERAL	= display.c display_utility.c parse_number.c ft_error.c ft_garbage_collector.c\
 					$(addprefix instructions/, push.c reverse.c rotate.c swap.c) \
-					ft_tmp.c 
+					ft_tmp.c ft_lst_is_sort.c
 FILES_PUSH		= push_swap.c main.c
 FILES_CHECK		= main.c checker.c
 

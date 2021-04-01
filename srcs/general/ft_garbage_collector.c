@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:46:58 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 15:09:00 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 13:50:52 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*malloc_gc(t_list **gc, size_t size)
 
 	malloc_ptr = malloc(size);
 	if (!malloc_ptr)
-		exit(EXIT_FAILURE);
+		ft_error(*gc);
 	ft_lstadd_front(gc, ft_lstnew(malloc_ptr));
 	return (malloc_ptr);
 }

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tmp.c                                           :+:      :+:    :+:   */
+/*   ft_lst_is_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/31 15:13:57 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/01 12:52:01 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2021/04/01 14:06:20 by alafranc          #+#    #+#             */
+/*   Updated: 2021/04/01 14:15:43 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "general.h"
 
-void	ft_print_struct_int(t_list *lst)
+int		ft_lst_is_sort(t_list *lst)
 {
+	int big;
+	
+	if (!lst)
+		return (1);
+	big = (int)lst->content;
 	while (lst)
 	{
-		printf("%d", (int)lst->content);
+		if (big > lst->content)
+			return (0);
+		big = lst->content;
 		lst = lst->next;
 	}
-}
-
-void	ft_print_struct_str(t_list *lst)
-{
-	while (lst)
-	{
-		printf("list_content:%s\n", (char*)lst->content);
-		lst = lst->next;
-	}
+	return (1);
 }

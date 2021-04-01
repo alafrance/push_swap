@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 14:35:55 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 13:31:14 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void				ft_putstr(char *str);
 void				ft_putnbr(int n);
 int					ft_size_nb(unsigned long long nb, int base);
 char				*ft_remove_first_line(char *file);
-char				*fill_filebuf(int fd, char *filebuf, int *b_read, int *eof);
+char				*fill_filebuf(int fd, char *filebuf, int *b_read);
 int					get_next_line(int fd, char **line);
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(char *src);
@@ -136,4 +136,5 @@ void				free_all(char **strs, int j);
 char				**ft_strsjoin(char **s1, char *s2);
 char				**ft_strsdup(char **s1);
 char				*ft_strcpy(char *dest, char *src);
+void				*malloc_gc(t_list **gc, size_t size);
 #endif
