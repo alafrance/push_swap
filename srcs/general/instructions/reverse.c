@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:02:49 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/01 14:05:18 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:18:16 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,26 @@ void reverse_rotate_list(t_list **lst)
 	*lst = tmp;
 }
 
-void reverse_rotate_a(t_list **a, t_list **b)
+void reverse_rotate_a(t_list **a, t_list **b, int is_print)
 {
 	(void)b;
 	reverse_rotate_list(a);
-	// ft_printf("rra\n");
+	if (is_print)
+		ft_printf("rra\n");
 }
 
-void reverse_rotate_b(t_list **a, t_list **b)
+void reverse_rotate_b(t_list **a, t_list **b, int is_print)
 {
 	(void)a;
 	reverse_rotate_list(b);
-	// ft_printf("rrb\n");
+	if (is_print)
+		ft_printf("rrb\n");
 }
 
-void reverse_rotate_a_b(t_list **a, t_list **b)
+void reverse_rotate_a_b(t_list **a, t_list **b, int is_print)
 {
 	reverse_rotate_list(a);
 	reverse_rotate_list(b);
-	// ft_printf("rrr\n");
+	if (is_print)
+		ft_printf("rrr\n");
 }

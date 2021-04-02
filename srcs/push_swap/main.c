@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 19:27:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 15:27:26 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:35:06 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int ac, char **av)
 	if (ac == 1)
 		ft_error(gc);
 	parse_number(ac, av, &a, &gc);
+	push_swap(&a, &b, &gc);
 	display_stack(a, b);
 	ft_lstclear(&gc, free);
 }

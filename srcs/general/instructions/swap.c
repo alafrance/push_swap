@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:57:57 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/01 14:05:24 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:19:10 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,26 @@ void	swap_list(t_list **lst)
 	(*lst)->next->content = tmp;
 }
 
-void swap_a(t_list **a, t_list **b)
+void swap_a(t_list **a, t_list **b, int is_print)
 {
 	(void)b;
 	swap_list(a);
-	// ft_printf("sa\n");
+	if (is_print)
+		ft_printf("sa\n");
 }
 
-void swap_b(t_list **a, t_list **b)
+void swap_b(t_list **a, t_list **b, int is_print)
 {
 	(void)a;
 	swap_list(b);
-	// ft_printf("sb\n");
+	if (is_print)
+		ft_printf("sb\n");
 }
 
-void swap_a_b(t_list **a, t_list **b)
+void swap_a_b(t_list **a, t_list **b, int is_print)
 {
 	swap_list(a);
 	swap_list(b);
-	// ft_printf("ss");
+	if (is_print)
+		ft_printf("ss");
 }

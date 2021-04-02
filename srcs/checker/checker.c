@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 19:27:47 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/01 14:14:59 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 14:46:09 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	is_instruction(char *str, t_list **gc)
 
 void	*init_array_instruction_function(t_list **gc)
 {
-	void	(**ft_instruction)(t_list **, t_list **);
+	void	(**ft_instruction)(t_list **, t_list **, int);
 
 	ft_instruction = malloc_gc(gc, sizeof(ft_instruction) * 11);
 	ft_instruction[0] = &swap_a;
@@ -95,7 +95,7 @@ void	*init_array_instruction_function(t_list **gc)
 void	do_instruction(t_list *instruction, t_list **gc, t_list **a, t_list **b)
 {
 	char	**tab;
-	void	(**ft_instruction)(t_list **, t_list **);
+	void	(**ft_instruction)(t_list **, t_list **, int);
 	int	i;
 
 	tab = all_instruction_on_tab(gc);
@@ -107,7 +107,7 @@ void	do_instruction(t_list *instruction, t_list **gc, t_list **a, t_list **b)
 		{
 			if (!ft_strcmp(instruction->content, tab[i]))
 			{
-				ft_instruction[i](a, b);
+				ft_instruction[i](a, b, 0);
 				break;
 			}
 		}
@@ -121,13 +121,8 @@ void	checker(t_list **a, t_list **b, t_list **gc)
 
 	instruction = NULL;
 	pick_instruction(&instruction, gc);
-	if (!instruction)
-	{
-		ft_lstclear(gc, free);
-		exit(EXIT_FAILURE);
-	}
 	do_instruction(instruction, gc, a, b);
-	if (ft_lst_is_sort(instruction))
+	if (ft_lst_is_sort(*a, *b))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:59:35 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/01 14:05:10 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:33:50 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ void push_list(t_list **add, t_list **remove)
 	*add = tmp;
 }
 
-void push_a(t_list **a, t_list **b)
+void push_a(t_list **a, t_list **b, int is_print)
 {
 	push_list(a, b);
-	// ft_printf("pa\n");
+	if (is_print)
+		ft_printf("pa\n");
 }
 
-void push_b(t_list **a, t_list **b)
+void push_b(t_list **a, t_list **b, int is_print)
 {
 	push_list(b, a);
-	// ft_printf("pb\n");
+	if (is_print)
+		ft_printf("pb\n");
 }

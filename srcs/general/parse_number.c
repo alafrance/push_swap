@@ -6,11 +6,23 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/03/31 15:27:23 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/02 11:00:18 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+int		is_present(int nb, t_list *lst)
+{
+	while (lst)
+	{
+		if ((int)lst->content == nb)
+			return (1);
+		lst = lst->next;
+	}
+	return (0);
+}
 
 long	ft_atoi_one_number(char **av, int *is_num, int *size_n)
 {
@@ -50,7 +62,7 @@ void	pick_number(char *str, t_list **a, t_list **gc)
 		if (!ft_isdigit(*str) && *str != ' ' && *str != '-')
 			ft_error(*gc);
 		nb = ft_atoi_one_number(&str, &is_num, &size_n);
-		if (size_n > 10 || nb > INT_MAX || nb < INT_MIN)
+		if (size_n > 10 || nb > INT_MAX || nb < INT_MIN || is_present(nb, *a))
 			ft_error(*gc);
 		ft_lstadd_back(a, ft_lstnew((void*)nb));
 		ft_lstadd_back(gc, ft_lstnew(ft_lstlast(*a)));
