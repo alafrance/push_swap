@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 11:17:04 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 18:12:36 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	*malloc_gc(t_list **gc, size_t size);
 **	IS_SORT
 */
 int		ft_lst_is_sort(t_list *a, t_list *b);
+int		ft_lst_is_sort_simplify(t_list *lst);
 /*
 **	TMP FUNCTION FOR DEBUG
 */

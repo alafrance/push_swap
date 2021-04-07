@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:59:35 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 11:33:50 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 18:28:44 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,8 @@ void push_list(t_list **add, t_list **remove)
 	if (!*remove)
 		return ;
 	tmp = *remove;
-	if ((*remove)->next)
-		*remove = (*remove)->next;
-	else
-		*remove = NULL;
-	if (*add)
-		tmp->next = *add;
-	else
-		tmp->next = NULL;
+	*remove = (*remove)->next;
+	tmp->next = *add;
 	*add = tmp;
 }
 

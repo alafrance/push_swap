@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 19:27:47 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 14:46:09 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/03 09:28:56 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void pick_instruction(t_list **instruction, t_list **gc)
 	 		ft_error(*gc);			 
 		}
 		ft_lstadd_back(instruction, ft_lstnew(ft_strdup(line)));
-	 	free(line);
+		free(line);
 	}
 	if (line)
 		free(line);

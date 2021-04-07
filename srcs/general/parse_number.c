@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 11:00:18 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/06 16:26:15 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,31 @@ int		is_present(int nb, t_list *lst)
 	return (0);
 }
 
-long	ft_atoi_one_number(char **av, int *is_num, int *size_n)
+long	ft_atoi_one_number(char *str, t_list **gc)
 {
 	long nb;
 	int neg;
+	int size_n;
 
+	
 	neg = 1;
 	nb = 0;
-	if (**av == '-')
+	size_n = 0;
+	if (*str == '-')
 	{
 		neg = -1;
-		(*av)++;			
+		str++;			
 	}
-	while (ft_isdigit(**av) && **av)
+	while (ft_isdigit(*str) && *str)
 	{
-		*is_num = 1;
-		nb = nb * 10 + **av - '0';
-		(*av)++;
-		(*size_n)++;
+		nb = nb * 10 + *str - '0';
+		str++;
+		size_n++;
+		if (size_n > 10)
+			ft_error(*gc);
 	}
+	if (nb == 0 && neg == -1 || *str != '\0')
+		ft_error(*gc);
 	nb *= neg;
 	return (nb);
 }
@@ -50,25 +56,25 @@ long	ft_atoi_one_number(char **av, int *is_num, int *size_n)
 void	pick_number(char *str, t_list **a, t_list **gc)
 {
 	long	nb;
-	int	size_n;
-	int	is_num;
+	char **nb_split;
+	int i;
 
-	is_num = 0;
-	while (*str)
+	i = -1;
+	nb_split = ft_split(str, ' ');
+	if (!nb_split)
+		ft_error(*gc);
+	ft_lstadd_back(gc, ft_lstnew(nb_split));
+	while (nb_split[++i])
+		ft_lstadd_back(gc, ft_lstnew(nb_split[i]));
+	i = -1;
+	while (nb_split[++i])
 	{
-		size_n = 0;
-		while (*str == ' ' && *str)
-			str++;
-		if (!ft_isdigit(*str) && *str != ' ' && *str != '-')
-			ft_error(*gc);
-		nb = ft_atoi_one_number(&str, &is_num, &size_n);
-		if (size_n > 10 || nb > INT_MAX || nb < INT_MIN || is_present(nb, *a))
+		nb = ft_atoi_one_number(nb_split[i], gc);
+		if (nb > INT_MAX || nb < INT_MIN || is_present(nb, *a))
 			ft_error(*gc);
 		ft_lstadd_back(a, ft_lstnew((void*)nb));
 		ft_lstadd_back(gc, ft_lstnew(ft_lstlast(*a)));
 	}
-	if (!is_num)
-		ft_error(*gc);
 }
 
 void	   parse_number(int ac, char **av, t_list **a, t_list **gc)
@@ -78,4 +84,6 @@ void	   parse_number(int ac, char **av, t_list **a, t_list **gc)
 	i = 1;
 	while (i != ac)
 		pick_number(av[i++], a, gc);
+	if (!a)
+		ft_error(*gc);
 }
