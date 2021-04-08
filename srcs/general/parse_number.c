@@ -6,14 +6,13 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/06 16:26:15 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 15:18:17 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int		is_present(int nb, t_list *lst)
+int	is_present(int nb, t_list *lst)
 {
 	while (lst)
 	{
@@ -26,18 +25,17 @@ int		is_present(int nb, t_list *lst)
 
 long	ft_atoi_one_number(char *str, t_list **gc)
 {
-	long nb;
-	int neg;
-	int size_n;
+	long	nb;
+	int		neg;
+	int		size_n;
 
-	
 	neg = 1;
 	nb = 0;
 	size_n = 0;
 	if (*str == '-')
 	{
 		neg = -1;
-		str++;			
+		str++;
 	}
 	while (ft_isdigit(*str) && *str)
 	{
@@ -47,7 +45,7 @@ long	ft_atoi_one_number(char *str, t_list **gc)
 		if (size_n > 10)
 			ft_error(*gc);
 	}
-	if (nb == 0 && neg == -1 || *str != '\0')
+	if ((nb == 0 && neg == -1) || *str != '\0')
 		ft_error(*gc);
 	nb *= neg;
 	return (nb);
@@ -56,8 +54,8 @@ long	ft_atoi_one_number(char *str, t_list **gc)
 void	pick_number(char *str, t_list **a, t_list **gc)
 {
 	long	nb;
-	char **nb_split;
-	int i;
+	char	**nb_split;
+	int		i;
 
 	i = -1;
 	nb_split = ft_split(str, ' ');
@@ -72,12 +70,12 @@ void	pick_number(char *str, t_list **a, t_list **gc)
 		nb = ft_atoi_one_number(nb_split[i], gc);
 		if (nb > INT_MAX || nb < INT_MIN || is_present(nb, *a))
 			ft_error(*gc);
-		ft_lstadd_back(a, ft_lstnew((void*)nb));
+		ft_lstadd_back(a, ft_lstnew((void *)nb));
 		ft_lstadd_back(gc, ft_lstnew(ft_lstlast(*a)));
 	}
 }
 
-void	   parse_number(int ac, char **av, t_list **a, t_list **gc)
+void	parse_number(int ac, char **av, t_list **a, t_list **gc)
 {
 	int	i;
 

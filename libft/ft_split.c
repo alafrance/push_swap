@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:18:32 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/03 08:52:18 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 15:39:05 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_all(char **strs, int index)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (index < 0)

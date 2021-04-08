@@ -6,16 +6,16 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:57:57 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 11:19:10 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 15:15:52 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 void	swap_list(t_list **lst)
 {
-	void *tmp;
+	void	*tmp;
+
 	if (!*lst || !(*lst)->next)
 		return ;
 	tmp = (*lst)->content;
@@ -23,7 +23,7 @@ void	swap_list(t_list **lst)
 	(*lst)->next->content = tmp;
 }
 
-void swap_a(t_list **a, t_list **b, int is_print)
+void	swap_a(t_list **a, t_list **b, int is_print)
 {
 	(void)b;
 	swap_list(a);
@@ -31,7 +31,7 @@ void swap_a(t_list **a, t_list **b, int is_print)
 		ft_printf("sa\n");
 }
 
-void swap_b(t_list **a, t_list **b, int is_print)
+void	swap_b(t_list **a, t_list **b, int is_print)
 {
 	(void)a;
 	swap_list(b);
@@ -39,7 +39,7 @@ void swap_b(t_list **a, t_list **b, int is_print)
 		ft_printf("sb\n");
 }
 
-void swap_a_b(t_list **a, t_list **b, int is_print)
+void	swap_a_b(t_list **a, t_list **b, int is_print)
 {
 	swap_list(a);
 	swap_list(b);

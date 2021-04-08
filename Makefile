@@ -6,7 +6,7 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/04/01 14:06:14 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2021/04/08 15:44:11 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ CHECKER			= checker
 
 FILES_GENERAL	= display.c display_utility.c parse_number.c ft_error.c ft_garbage_collector.c\
 					$(addprefix instructions/, push.c reverse.c rotate.c swap.c) \
-					ft_tmp.c ft_lst_is_sort.c
-FILES_PUSH		= push_swap.c main.c
-FILES_CHECK		= main.c checker.c
+					ft_lst_is_sort.c 
+FILES_PUSH		= push_swap.c main.c algo_sort.c algo_sort_5.c algo_sort_3.c reference_tab.c \
+					find_number.c
+FILES_CHECK		= main.c checker.c array_instruction.c
 
 GEN_PATH		= general/
 PUSH_PATH		= push_swap/
@@ -34,14 +35,14 @@ SRC_2			= $(addprefix ${SRC_PATH}, $(addprefix ${CHECK_PATH}, ${FILES_CHECK}) $(
 CC				= clang
 OBJS 			= ${SRC:.c=.o}
 OBJS_2 			= ${SRC_2:.c=.o}
-FLAGS			= #-fsanitize=address -g3
+FLAGS			= -Wall -Wextra -Werror
 
 #LIBRARY
 NAME_LIBFT 		= libft.a
 LIBFT_PATH 		= libft/
 LIBFT			= $(addprefix ${LIBFT_PATH}, ${NAME_LIBFT})
 
-all: 			${PUSH}	
+all: 			${PUSH}	${CHECKER}
 
 lib: 
 				make -C ${LIBFT_PATH}
@@ -50,8 +51,10 @@ lib:
 %.o: %.c 		${INC}
 				${CC} ${FLAGS} -c $< -o $@ -I ${INC_PATH}
 
-${PUSH}: 		lib ${OBJS} ${OBJS_2}
+${PUSH}: 		lib ${OBJS}
 				${CC} ${FLAGS} ${OBJS} -o ${PUSH} ${NAME_LIBFT} -I ${INC_PATH}
+
+${CHECKER}:		lib ${OBJS_2}
 				${CC} ${FLAGS} ${OBJS_2} -o ${CHECKER} ${NAME_LIBFT} -I ${INC_PATH}
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:01:43 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/02 11:18:44 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 15:16:09 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate_list(t_list **lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!*lst || !(*lst)->next)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/06 18:12:36 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 15:41:20 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include "../libft/libft.h"
 # include "color.h"
 # include <limits.h>
-#include <stdio.h> //
+# include <stdio.h>
+
 /*
 ** DISPLAY STACK
 */
 void	display_stack(t_list *a, t_list *b);
 void	display_text_center(char *text);
-void	display_line_empty();
+void	display_line_empty(void);
 /*
 ** PARSE
 */
@@ -30,7 +31,7 @@ void	parse_number(int ac, char **av, t_list **a, t_list **gc);
 /*
 ** ERROR
 */
-void	del(void * content);
+void	del(void *content);
 int		ft_error(t_list *gc);
 /*
 **	INSTRUCTIONS
