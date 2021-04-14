@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/08 15:18:17 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 07:58:30 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,25 @@ void	pick_number(char *str, t_list **a, t_list **gc)
 {
 	long	nb;
 	char	**nb_split;
+	t_list	*new_elem;
 	int		i;
 
 	i = -1;
 	nb_split = ft_split(str, ' ');
 	if (!nb_split)
 		ft_error(*gc);
-	ft_lstadd_back(gc, ft_lstnew(nb_split));
 	while (nb_split[++i])
 		ft_lstadd_back(gc, ft_lstnew(nb_split[i]));
+	ft_lstadd_front(gc, ft_lstnew(nb_split));
 	i = -1;
 	while (nb_split[++i])
 	{
 		nb = ft_atoi_one_number(nb_split[i], gc);
 		if (nb > INT_MAX || nb < INT_MIN || is_present(nb, *a))
 			ft_error(*gc);
-		ft_lstadd_back(a, ft_lstnew((void *)nb));
-		ft_lstadd_back(gc, ft_lstnew(ft_lstlast(*a)));
+		new_elem = ft_lstnew((void *)nb);
+		ft_lstadd_back(a, new_elem);
+		ft_lstadd_front(gc, ft_lstnew(new_elem));
 	}
 }
 

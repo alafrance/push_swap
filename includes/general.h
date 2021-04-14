@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:16:56 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/08 15:41:20 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 08:21:28 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	parse_number(int ac, char **av, t_list **a, t_list **gc);
 /*
 ** ERROR
 */
-void	del(void *content);
 int		ft_error(t_list *gc);
 /*
 **	INSTRUCTIONS
