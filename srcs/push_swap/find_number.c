@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:15:35 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/08 13:05:09 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 07:11:53 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	ft_maximum_number(t_list *b)
 
 	index = 0;
 	index_r = 0;
-	max = (int)b->content;
+	max = 0;
 	while (b)
 	{
-		index++;
 		if ((int)b->content > max)
 		{
 			index_r = index;
 			max = (int)b->content;
 		}	
+		index++;
 		b = b->next;
 	}
 	return (index_r);
@@ -40,18 +40,20 @@ int	ft_minimum_number(t_list *a)
 	int	index;
 	int	index_r;
 
+	if (!a)
+		return (-1);
 	index = 0;
 	index_r = 0;
 	min = (int)a->content;
 	while (a)
 	{
-		index++;
 		if ((int)a->content < min)
 		{
 			index_r = index;
 			min = (int)a->content;
 		}	
 		a = a->next;
+		index++;
 	}
 	return (index_r);
 }

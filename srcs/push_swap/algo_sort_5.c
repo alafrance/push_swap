@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:13:27 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/08 13:05:56 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 07:23:16 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_minimun_b(t_list **a, t_list **b)
 
 	lstsize = ft_lstsize(*a);
 	min_i = ft_minimum_number(*a);
-	if (min_i > (lstsize + 1) / 2)
+	if (min_i >= 3)
 		while (ft_minimum_number(*a))
 			reverse_rotate_a(a, b, 1);
 	else

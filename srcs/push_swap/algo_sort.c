@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:13:24 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/08 15:15:16 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 14:54:28 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,82 +26,116 @@ void	put_number_on_the_top(t_list **a, t_list **b, int pos, int size)
 	push_b(a, b, 1);
 }
 
-void	push_between_bounds(t_list **a, t_list **b,
-							int bound_min, int bound_max)
+void	push_index(t_list **add, t_list **remove, int index, int is_stack_a)
 {
-	int		pos;
-	int		size;
-	t_list	*tmp;
-
-	tmp = *a;
-	size = ft_lstsize(*a);
-	pos = 0;
-	while (tmp)
-	{
-		if ((int)tmp->content >= bound_min && (int)tmp->content <= bound_max)
-		{
-			put_number_on_the_top(a, b, pos, size);
-			tmp = *a;
-			pos = -1;
-		}
-		else
-			tmp = tmp->next;
-		pos++;
-	}
-}
-
-void	push_max_a(t_list **a, t_list **b)
-{
-	int	max_pos;
 	int	lstsize;
 
-	lstsize = ft_lstsize(*b);
-	max_pos = ft_maximum_number(*b);
-	if (max_pos > (lstsize + 1) / 2)
-		while (ft_maximum_number(*b))
-			reverse_rotate_b(a, b, 1);
+	lstsize = ft_lstsize(*add);
+	if (index > (lstsize + 1) / 2)
+		while (index++ < lstsize)
+		{
+			if (is_stack_a)
+				reverse_rotate_a(add, remove, 1);
+			else
+				reverse_rotate_b(add, remove, 1);		
+		}
 	else
-		while (ft_maximum_number(*b))
-			rotate_b(a, b, 1);
-	push_a(a, b, 1);
+		while (index--)
+		{
+			if (is_stack_a)
+				rotate_a(add, remove, 1);
+			else
+				rotate_a(add, remove, 1);
+		}
+	if (is_stack_a)
+		push_b(add, remove, 1);
+	else
+		push_a(add, remove, 1);
 }
 
-void	push_on_stack_b(t_list **a, t_list **b, int *tab, int size)
+void	push_on_stack_b_median(t_list **a, t_list **b, int median)
 {
-	int	number_bounds;
-	int	bound_min_i;
-	int	bound_max_i;
-	int	i;
+	t_list	*begin;
+	int		index;
+
+	index = 0;
+	begin = *a;
+	// dprintf(1, "median: %d\n", median);
+	while (*a)
+	{
+		if ((int) (*a)->content <= median)
+		{
+			push_index(&begin, b, index, 1);
+			*a = begin;
+			index = -1;
+		}
+		else
+			*a = (*a)->next;
+		index++;
+	}
+	*a = begin;
+}
+
+int		is_in_stack(int number, t_list *lst)
+{
+	int i;
 
 	i = 0;
-	bound_max_i = 0;
-	bound_min_i = 0;
-	number_bounds = ft_sqrt_int(size) / 1.5;
-	while (i != number_bounds)
+	while (lst)
 	{
-		bound_min_i = size / number_bounds * i;
-		if (i != 0)
-			bound_min_i++;
-		if (i == number_bounds - 1)
-			bound_max_i = size - 1;
-		else
-			bound_max_i = size / number_bounds * (i + 1);
-		push_between_bounds(a, b, tab[bound_min_i], tab[bound_max_i]);
+		if ((int)lst->content == number)
+			return (i);
+		lst = lst->next;
 		i++;
 	}
+	return (-1);
 }
 
 void	algo_sort(t_list **a, t_list **b, t_list **gc)
 {
-	int	*tab;
-	int	size;
-
-	size = ft_lstsize(*a);
-	tab = create_tab(*a, gc, size);
-	tab = sort_int_tab(tab, size);
-	if (ft_lst_is_sort(*a, *b))
-		return ;
-	push_on_stack_b(a, b, tab, size);
-	while (*b)
-		push_max_a(a, b);
+	s_ref	*ref;
+	int index;
+	int	num_index;
+	
+	ref = malloc(sizeof(s_ref));
+	ft_lstadd_front(gc, ft_lstnew(ref));
+	index = 0;
+	num_index = 0;
+	// if (ft_lst_is_sort(*a, *b))
+		// return ;
+	ref->size = ft_lstsize(*a);
+	ref->tab = create_tab(*a, gc, ref->size);
+	ref->tab = sort_int_tab(ref->tab, ref->size);
+	if (ft_even(ref->size))
+		ref->median = ref->size / 2 - 1;
+	else
+		ref->median = ref->size / 2;
+	push_on_stack_b_median(a, b, ref->tab[ref->median]);
+	// display_stack(*a, *b);
+	while (index != ref->size)
+	{
+		// sleep(1);
+		// ft_printf("\033c");
+	// 	// dprintf(1, "\x1b");
+		if ((num_index = is_in_stack(ref->tab[index], *b)) != -1)
+		{
+			// dprintf(1, "num_index: %d\n", num_index);
+			// ft_printf("PUT IN A\n");
+			// sleep(1);
+			while (num_index-- != -1)
+				push_a(a, b, 1);
+		}
+		else if ((num_index = is_in_stack(ref->tab[index], *a)) != -1)
+		{
+			// dprintf(1, "num_indexx: %d\n", num_index);
+			// ft_printf("PUT IN B\n");
+			// sleep(1);
+			while (num_index--)
+				push_b(a, b, 1);
+		}
+		// if (b->content)
+		rotate_a(a, b, 1);
+		index++;
+	}
+	// display_stack(*a, *b);
 }
