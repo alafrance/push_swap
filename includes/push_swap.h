@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 13:36:43 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/14 14:15:58 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/20 14:10:44 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "general.h"
-
-typedef		struct	t_ref
-{
-	int	*tab;
-	int	size;
-	int	median;
-}					s_ref;
 
 /*
 **	PUSH_SWAP
