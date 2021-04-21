@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/14 07:58:30 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/21 14:41:44 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,4 @@ void	parse_number(int ac, char **av, t_list **a, t_list **gc)
 	i = 1;
 	while (i != ac)
 		pick_number(av[i++], a, gc);
-	if (!a)
-		ft_error(*gc);
 }

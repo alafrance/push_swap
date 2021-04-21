@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:15:35 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/14 07:11:53 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/21 15:38:00 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_maximum_number(t_list *b)
 
 	index = 0;
 	index_r = 0;
-	max = 0;
+	max = (int)b->content;
+	b = b->next;
+	index++;
 	while (b)
 	{
 		if ((int)b->content > max)

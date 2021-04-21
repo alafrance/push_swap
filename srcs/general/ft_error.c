@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:47:29 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/20 11:23:47 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/21 14:27:28 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_error(t_list *gc)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	ft_lstclear(&gc, free);
 	exit(EXIT_FAILURE);
 	return (0);

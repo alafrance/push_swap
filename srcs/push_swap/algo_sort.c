@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:49:38 by alafranc          #+#    #+#             */
-/*   Updated: 2021/04/20 13:49:46 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/04/21 15:38:37 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	push_max_a(t_list **a, t_list **b)
 	lstsize = ft_lstsize(*b);
 	max_pos = ft_maximum_number(*b);
 	if (max_pos > (lstsize + 1) / 2)
-		while (ft_maximum_number(*b))
+		while (max_pos++ != lstsize)
 			reverse_rotate_b(a, b, 1);
 	else
-		while (ft_maximum_number(*b))
+		while (max_pos--)
 			rotate_b(a, b, 1);
 	push_a(a, b, 1);
 }
